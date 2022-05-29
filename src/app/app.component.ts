@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { LoginServiceService } from './login-service.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers:[]
 })
 export class AppComponent {
-  title = 'webfr-project';
+  title = 'FHTW Puzzle Game';
 }

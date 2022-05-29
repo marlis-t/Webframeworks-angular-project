@@ -1,0 +1,18 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+mat-form-field{
+    width: 100%;
+}
+mat-spinner{
+    margin: auto;
+}
+.login-error{
+    color: red;
+    text-decoration: underline;
+}
+.login-status{
+    text-transform: bold;
+    text-decoration: underline;
+}
+.bigheader, .biggerheader{
+    font-weight: bold;
+}

@@ -1,0 +1,23 @@
+<mat-card>
+    <h2 class="biggerheader">Login</h2>
+    <mat-spinner *ngIf = "isLoading"></mat-spinner>
+    <form *ngIf="!isLoading" name="login-form">
+        <mat-form-field appearance="fill">
+            <label for="email" class="form-label">Enter your Email</label>
+            <input matInput type="email" #useremail [(ngModel)]="emailInput" name="email" placeholder="test@test.at" id="email" required><br>
+        </mat-form-field>
+        <div class="login-error" *ngIf="emailErrorBool">{{emailError}}</div><br><br>
+        <mat-form-field appearance="fill">
+            <label for="password" class="form-label">Enter your Password</label>
+            <input matInput [type]="hide ? 'password': 'text'"  #password [(ngModel)]="passwordInput" name="password" placeholder="12345678" id="password" required>
+            <button mat-icon-button type="button" matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off': 'visibility'}}</mat-icon> 
+            </button> <br>
+        </mat-form-field>
+        <div class="login-error" *ngIf="passwordErrorBool">{{passwordError}}</div>
+        <br><br><br>
+        <button mat-raised-button (click)="login(useremail.value, password.value)" color="primary" type="submit" id="loginbtn">Login</button>
+    </form>
+    <br><br>
+    <div class="login-status"> {{loginStatus}}</div>
+</mat-card>

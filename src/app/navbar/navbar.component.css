@@ -1,0 +1,12 @@
+.spaces{
+    flex: 1 1 auto;
+  }
+
+a:hover{
+    filter: brightness(90%);
+}
+a{ 
+    margin-left: 1%;
+    margin-right: 1%;
+    font-size: 15px;
+}

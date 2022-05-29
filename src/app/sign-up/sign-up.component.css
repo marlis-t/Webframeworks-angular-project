@@ -1,0 +1,17 @@
+mat-form-field{
+    width: 100%;
+}
+mat-spinner{
+    margin: auto;
+}
+.bigheader, .biggerheader{
+    font-weight: bold;
+}
+.signup-error{
+    color: red;
+    text-decoration: underline;
+}
+.signup-status{
+    text-transform: bold;
+    text-decoration: underline;
+}

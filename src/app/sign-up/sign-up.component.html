@@ -1,0 +1,69 @@
+<mat-card>
+    <h2 class="biggerheader">Sign Up</h2>
+    <h4 class="bigheader">*mandatory</h4>
+    <mat-spinner *ngIf = "isLoading"></mat-spinner>
+    <form *ngIf="!isLoading" name="signup-form">
+        <mat-form-field appearance="fill">
+            <label for="username" class="form-label">Enter your Username*</label>
+            <input matInput type="text" #username [(ngModel)]="usernameInput" name="username" placeholder="maxmuster1" id="username" required><br>
+        </mat-form-field>
+        <div class="signup-error">{{usernameError}}</div><br>
+
+        <mat-form-field appearance="fill">
+            <label for="email" class="form-label">Enter your Email*</label>
+            <input matInput type="email" #useremail [(ngModel)]="emailInput" name="email" placeholder="test@test.at" id="email" required><br>
+        </mat-form-field>
+        <div class="signup-error">{{emailError}}</div><br>
+
+        <mat-form-field appearance="fill">
+            <label for="confEmail" class="form-label">Confirm your Email*</label>
+            <input matInput type="email" #userConfEmail [(ngModel)]="confEmailInput" name="confEmail" placeholder="test@test.at" id="confEmail" required><br>
+        </mat-form-field>
+        <div class="signup-error">{{confEmailError}}</div><br>
+
+        <mat-form-field appearance="fill">
+            <label for="password" class="form-label">Enter your Password*</label>
+            <input matInput [type]="hideP ? 'password': 'text'"  #password [(ngModel)]="passwordInput" name="password" placeholder="12345678" id="password" required>
+            <button mat-icon-button type="button" matSuffix (click)="hideP = !hideP" [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hideP">
+                <mat-icon>{{hideP ? 'visibility_off': 'visibility'}}</mat-icon> 
+            </button> <br>
+        </mat-form-field>
+        <div class="signup-error">{{passwordError}}</div><br>
+
+        <mat-form-field appearance="fill">
+            <label for="confPassword" class="form-label">Confirm your Password*</label>
+            <input matInput [type]="hideCp ? 'password': 'text'"  #confPassword [(ngModel)]="confPasswordInput" name="confPassword" placeholder="12345678" id="confPassword" required>
+            <button mat-icon-button type="button" matSuffix (click)="hideCp = !hideCp" [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hideCp">
+                <mat-icon>{{hideCp ? 'visibility_off': 'visibility'}}</mat-icon> 
+            </button> <br>
+        </mat-form-field>
+        <div class="signup-error">{{confPasswordError}}</div><br>
+
+        <mat-form-field appearance="fill">
+            <label for="firma" class="form-label">Firma</label>
+            <input matInput type='text' #firma name="firma" value="FH Technikum Wien" id="firma" readonly>
+        </mat-form-field> <br>
+
+        <mat-form-field appearance="fill">
+            <label for="street" class="form-label">Street</label>
+            <input matInput type='text' #street [(ngModel)]="streetInput" name="street" placeholder="Gardenstreet 5" id="street">
+        </mat-form-field>
+        <div class="signup-error">{{streetError}}</div><br>
+
+        <mat-form-field appearance="fill">
+            <label for="city" class="form-label">City</label>
+            <input matInput type='text' #city [(ngModel)]="cityInput" name="city" placeholder="Vienna" id="city">
+        </mat-form-field>
+        <div class="signup-error">{{cityError}}</div><br>
+
+        <mat-form-field appearance="fill">
+            <label for="PLZ" class="form-label">Postal Code</label>
+            <input matInput type='number' #PLZ [(ngModel)]="PLZInput" name="PLZ" id="PLZ">
+        </mat-form-field>
+        <div class="signup-error">{{PLZError}}</div><br>
+
+        <button mat-raised-button (click)="signup(username.value, useremail.value, password.value, confPassword.value, street.value, city.value, PLZ.valueAsNumber, userConfEmail.value)" color="primary" type="submit" id="signupbtn">Sign up</button>
+    </form>
+    <br><br>
+    <div class="signup-status"> {{signUpStatus}} </div>
+</mat-card>
