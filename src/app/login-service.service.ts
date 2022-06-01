@@ -1,3 +1,4 @@
+/*
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -48,7 +49,7 @@ export class LoginServiceService {
     return responseData; 
   }
   */
-
+/*
   login(username: string, password: string): Promise<boolean> {
     const loginData = {
       username: username,
@@ -77,3 +78,4 @@ export class LoginServiceService {
 interface Response {
   message: string
 }
+*/

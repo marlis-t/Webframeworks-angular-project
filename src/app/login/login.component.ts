@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginServiceService } from './../login-service.service';
+//import { LoginServiceService } from './../login-service.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const httpOptions = {
@@ -54,9 +54,11 @@ export class LoginComponent implements OnInit {
 
         if(responseData !== null){
           localStorage.setItem('token', responseData.token);
-          alert("You are logged in with username "+ responseData.username); 
-          this.loginStatus = "You are logged in with username "+ responseData.username;
           this.resetStats();
+          this.loginStatus = "You are logged in with username "+ responseData.username;
+          this.emailInput = "";
+          this.passwordInput = "";
+          alert("You are logged in with username "+ responseData.username);
         }
         else{
           this.loginStatus = "Wrong userdata, login failed";
