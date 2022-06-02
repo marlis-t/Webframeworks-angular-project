@@ -27,7 +27,10 @@ export class LoginComponent implements OnInit {
   passwordErrorBool = false;
   emailError: string ="";
   passwordError: string ="";
+
   loginStatus: string = "";
+  Url: string = "http://localhost:3000";
+
   emailInput: string = "";
   passwordInput: string = "";
 
@@ -49,8 +52,8 @@ export class LoginComponent implements OnInit {
         password: password
       }
       
-      this.http.post<{token: any, username: string, msg: string}>('http://localhost:3000/login', loginData, httpOptions).subscribe((responseData) => {
-        console.log(responseData);
+      this.http.post<{token: any, username: string, msg: string}>(this.Url + '/login', loginData, httpOptions).subscribe((responseData) => {
+        console.log("Sent-back login response: " + JSON.stringify(responseData));
 
         if(responseData !== null){
           localStorage.setItem('token', responseData.token);
@@ -62,7 +65,7 @@ export class LoginComponent implements OnInit {
         }
         else{
           this.loginStatus = "Wrong userdata, login failed";
-          alert("Your username or password is incorrect"); 
+          alert("Your username or password are incorrect"); 
         }
         
       });  

@@ -41,6 +41,7 @@ export class SignUpComponent implements OnInit {
   PLZError: string = "";
 
   signUpStatus: string = "";
+  Url: string = "http://localhost:3000";
 
   usernameInput: string = "";
   emailInput: string = "";
@@ -63,12 +64,9 @@ export class SignUpComponent implements OnInit {
         username: useremail,
         password: password
       }
-      //const thisSignupData = new signupData;
-      //thisSignupData.password = password;
-      //thisSignupData.username = username;
   
-        this.http.post<{token: any, username: any, success: boolean, msg: string}>('http://localhost:3000/signup', signupData, httpOptions).subscribe((responseData) => {
-          console.log(responseData);
+        this.http.post<{token: any, username: any, success: boolean, msg: string}>(this.Url + '/signup', signupData, httpOptions).subscribe((responseData) => {
+          console.log("Sent-back signup response: " + JSON.stringify(responseData));
   
           if(responseData.success){
             localStorage.setItem('token', responseData.token); 
@@ -80,7 +78,7 @@ export class SignUpComponent implements OnInit {
         });
     }
     else{ 
-      console.log("Wrong parameters typed in");
+      console.log("Wrong parameters");
     }
   }
 
@@ -140,7 +138,7 @@ export class SignUpComponent implements OnInit {
   }
 
   checkIfEmailValid(email: string){
-    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z]+)*$/;
 
     if (!email.match(validRegex)) {
       this.emailError += "Please enter a valid email address";
@@ -173,11 +171,3 @@ export class SignUpComponent implements OnInit {
   }
 
 }
-
-//const result = this.loginService.signup(username, password);
-      /*
-      if((await result).success){
-          alert("You are logged in with token "+(await result).token);  
-      }
-      console.log((await result));
-      this.signUpStatus = (await result).msg;*/

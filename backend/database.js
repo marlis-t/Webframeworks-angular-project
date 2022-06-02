@@ -1,7 +1,4 @@
-//prolly not important yet
-// npm install --save password-hash
-const passwordHash = require('password-hash');
-// npm install --save random-token
+//As of now, none of this is important anymore
 var randomToken = require('random-token');
 
 var db = {
