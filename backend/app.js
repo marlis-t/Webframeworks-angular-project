@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 //ue2 w.o. this one
-mongoose.connect('mongodb+srv://admin:123abc@cluster0.zxxzs.mongodb.net/?retryWrites=true&w=majority');
+mongoose.connect('mymongodblink');
 
 app.post('/login', function (req, res) {
   UserData.find({username: req.body.username, password: req.body.password}).then((foundData) => {
